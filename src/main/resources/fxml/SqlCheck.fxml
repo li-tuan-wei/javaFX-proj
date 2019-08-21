@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.TableView?>
+<?import com.jfoenix.controls.JFXButton?>
+<VBox spacing="5" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@/css/common.css" fx:controller="ldh.common.testui.controller.SqlCheckPaneController" >
+    <children>
+        <HBox spacing="5" alignment="CENTER_LEFT" styleClass="sql-show">
+            <children>
+                <Label fx:id="sqlShowLabel"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <JFXButton text="保存" onAction="#save" styleClass="btn, btn-info"/>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <BorderPane VBox.vgrow="ALWAYS">
+            <left>
+                <VBox spacing="5" styleClass="sql-list">
+                    <children>
+                        <Label text="验证SQL列表"/>
+                        <ListView fx:id="sqlListView" VBox.vgrow="ALWAYS"></ListView>
+                        <HBox spacing="5">
+                            <children>
+                                <JFXButton text="添加验证条件" onAction="#addSqlCheck" styleClass="btn, btn-primary"/>
+                                <JFXButton text="删除验证条件" onAction="#removeSqlCheck" styleClass="btn, btn-warning"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="0" left="0" right="0" top="5.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="0" left="0" right="5.0" top="0" />
+                    </padding>
+                </VBox>
+            </left>
+            <center>
+                <StackPane>
+                    <children>
+                        <VBox fx:id="showPane" spacing="5" styleClass="sql-table">
+                            <children>
+                                <Label text="数据验证列表"/>
+                                <TableView fx:id = "sqlCheckTableView" VBox.vgrow="ALWAYS"></TableView>
+                                <HBox spacing="5">
+                                    <children>
+                                        <JFXButton text="添加验证数据" onAction="#addSqlCheckData" styleClass="btn, btn-primary"/>
+                                        <JFXButton text="编辑验证数据" onAction="#editSqlCheckData" styleClass="btn, btn-info"/>
+                                        <JFXButton text="删除验证数据" onAction="#removeSqlCheckData" styleClass="btn, btn-warning"/>
+                                        <JFXButton text="上移" onAction="#upSqlCheckData" styleClass="btn"/>
+                                        <JFXButton text="下移" onAction="#downSqlCheckData" styleClass="btn"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <ScrollPane fx:id="editPane" fitToHeight="true" fitToWidth="true" visible="false" styleClass="sql-edit-pane">
+                            <content>
+                                <GridPane fx:id="editGridPane" >
+
+                                </GridPane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                    <padding>
+                        <Insets bottom="0" left="5" right="0" top="0" />
+                    </padding>
+                </StackPane>
+            </center>
+        </BorderPane>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</VBox>

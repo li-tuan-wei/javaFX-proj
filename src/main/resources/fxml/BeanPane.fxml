@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import ldh.common.testui.component.MaskTextField?>
+<VBox stylesheets="@/css/classPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ldh.common.testui.controller.BeanCheckController">
+    <children>
+        <HBox styleClass="title-container">
+            <children>
+                <Label text="检测对象" styleClass="title"> </Label>
+            </children>
+        </HBox>
+        <StackPane fx:id="stackPane" VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane fx:id="listPane" fitToWidth="true" fitToHeight="true">
+                    <content>
+                        <VBox alignment="CENTER_LEFT">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="检测对象"/>
+                                <MaskTextField fx:id="checkBeanTextField" promptText="检测对象" HBox.hgrow="ALWAYS"/>
+                                <Label text="对象类型"/>
+                                <ChoiceBox fx:id="beanTypeBox" prefHeight="40" prefWidth="150"/>
+                                <StackPane prefWidth="150" >
+                                    <ChoiceBox fx:id="textCompareTypeChoiceBox" prefHeight="40" visible="false"/>
+                                    <ChoiceBox fx:id="beanValueTypeChoiceBox" prefHeight="40" visible="false"/>
+                                </StackPane>
+                                <JFXButton text="保存" styleClass="btn, btn-primary" onAction="#saveAction"/>
+                                <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </padding>
+                            </HBox>
+
+                            <StackPane VBox.vgrow="ALWAYS">
+                                <VBox fx:id="tablePane">
+                                    <TableView fx:id="dataTableView" VBox.vgrow="ALWAYS"></TableView>
+                                    <HBox spacing="5">
+                                        <children>
+                                            <JFXButton text="添加" onAction="#addBeanData" styleClass="btn, btn-primary"/>
+                                            <JFXButton text="修改" onAction="#editBeanData" styleClass="btn, btn-info"/>
+                                            <HBox fx:id="beanListControl">
+                                                <JFXButton text="上移" onAction="#upData" styleClass="btn, btn-block"/>
+                                                <JFXButton text="下移" onAction="#downData" styleClass="btn, btn-block"/>
+                                            </HBox>
+                                            <Region HBox.hgrow="ALWAYS"/>
+                                            <JFXButton text="删除" onAction="#removeData" styleClass="btn, btn-warning"/>
+                                        </children>
+                                        <padding>
+                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                        </padding>
+                                    </HBox>
+                                </VBox>
+                                <VBox fx:id="textPane" visible="false">
+                                    <TextArea fx:id="textTextArea" VBox.vgrow="ALWAYS"></TextArea>
+                                    <HBox spacing="5">
+                                        <children>
+                                            <JFXButton text="保存" onAction="#saveText" styleClass="btn, btn-primary"/>
+                                        </children>
+                                        <padding>
+                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                        </padding>
+                                    </HBox>
+                                </VBox>
+                            </StackPane>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="paramPane" fitToHeight="true" fitToWidth="true" prefWidth="0" minWidth="0" visible="false">
+                    <content>
+                        <GridPane fx:id="editPane" hgap="5" vgap="5">
+                            <children>
+
+                            </children>
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="150.0" prefWidth="100.0" halignment="RIGHT"/>
+                                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+                            </columnConstraints>
+                        </GridPane>
+                    </content>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </ScrollPane>
+            </children>
+        </StackPane>
+
+    </children>
+</VBox>

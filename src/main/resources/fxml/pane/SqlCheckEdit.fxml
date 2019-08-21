@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.HBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<GridPane hgap="5" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@/css/common.css,@/css/bootstrapfx.css" fx:controller="ldh.common.testui.controller.pane.SqlCheckController">
+    <children>
+        <Label text="测试名称" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nameTextField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="选择数据库" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="databaseChoiceBox" prefWidth="200" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Sql" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextArea fx:id="sqlTextArea" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="sql-text-area"/>
+
+        <Label text="Sql数据结构" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextArea fx:id="sqlStructTextArea" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="sql-text-area" prefRowCount="3"/>
+
+        <Label text="参数" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <HBox GridPane.rowIndex="4" GridPane.columnIndex="1" spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="argsTextField" HBox.hgrow="ALWAYS"/>
+            <JFXButton text="检查变量" onAction="#checkVarAction" styleClass="btn, btn-primary"/>
+        </HBox>
+
+    </children>
+</GridPane>

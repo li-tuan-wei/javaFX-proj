@@ -1,0 +1,1 @@
+alter table tree add column enable BOOLEAN;

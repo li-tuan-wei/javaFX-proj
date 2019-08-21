@@ -1,0 +1,33 @@
+.root {
+    -fx-font-size: 14px;
+}
+
+.class-pane {
+    -fx-spacing: 5;
+    /*-fx-background-color: darkgray;*/
+}
+
+.abs-top-nav {
+    -fx-background-color: whitesmoke;
+    -fx-padding: 10;
+}
+
+.title-container {
+    -fx-background-color: whitesmoke;
+    -fx-border-color: whitesmoke;
+}
+
+.title {
+    -fx-padding: 10;
+    -fx-font-size: 20px;
+    -fx-font-weight: 500;
+}
+
+.class-selection {
+    -fx-padding: 10;
+    -fx-spacing: 5;
+}
+
+.choice-box  {
+    -fx-font-size: 14px;
+}

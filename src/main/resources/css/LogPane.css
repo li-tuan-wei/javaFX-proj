@@ -1,0 +1,130 @@
+.log-pane:focused {
+    -fx-background-color: transparent;
+}
+
+.log-pane .label {
+    -fx-text-fill: black;
+}
+
+.log-pane .title {
+    -fx-font-size: 36px;
+    -fx-fill: green;
+    -fx-text-fill: green;
+    -fx-padding: 10px;
+}
+
+.log-pane .header {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-font-size: 20px;
+}
+
+.log-pane .header-sub {
+    -fx-padding: 10px 10px 10px 30px;
+    -fx-spacing: 10px;
+    -fx-font-size: 18px;
+}
+
+.log-pane .first-sub {
+     -fx-padding: 6px 6px 6px 10px;
+     -fx-spacing: 10px;
+     -fx-font-size: 18px;
+ }
+
+.log-pane .first-sub .label {
+    -fx-font-weight: 600;
+}
+
+.log-pane .second-sub {
+    -fx-padding: 6px 6px 6px 30px;
+    -fx-spacing: 8px;
+    -fx-font-size: 18px;
+}
+
+.log-pane .third-sub {
+    -fx-padding: 6px 6px 6px 50px;
+    -fx-spacing: 6px;
+    -fx-font-size: 18px;
+}
+
+.log-pane .four-sub {
+    -fx-padding: 6px 6px 6px 70px;
+    -fx-spacing: 4px;
+    -fx-font-size: 18px;
+}
+
+.log-pane .data-first-sub {
+    -fx-padding: 0 10px 0 40px;
+    -fx-spacing: 8px;
+    -fx-font-size: 16px;
+}
+
+.log-pane .data-second-sub {
+    -fx-padding: 0 10px 0 50px;
+    -fx-spacing: 8px;
+    -fx-font-size: 16px;
+}
+
+.log-pane .data-third-sub {
+    -fx-padding: 0 10px 0 70px;
+    -fx-spacing: 8px;
+    -fx-font-size: 16px;
+}
+
+.log-pane .param-content {
+    -fx-background-insets: 0px 0px 0px 0px;
+    -fx-padding: 10px 10px 10px 10px;
+    -fx-background-color: #97dcc6;
+    -fx-background-radius: 5px;
+}
+
+.log-pane .second-content {
+    -fx-padding: 0 10px 0 30px;
+}
+
+.log-pane .param-content .label {
+    -fx-padding: 0px 0px 0px 10px;
+    -fx-fill: white;
+}
+
+.log-pane .http-pane {
+    -fx-padding: 10px 10px 10px 80px;
+}
+
+.log-pane .http-content {
+    -fx-text-fill: white;
+    -fx-padding: 10px 10px 10px 90px;
+    -fx-background-insets: 0px 10px 0px 80px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #348080;
+}
+
+.log-pane .text-area {
+    -fx-background-color: transparent;
+    -fx-fill: #a9a9a9;
+    -fx-control-inner-background: #f5f5f5;
+}
+
+.log-pane .text-area:focused {
+    -fx-background-color: transparent;
+}
+
+.log-pane .tree-view:focused {
+    -fx-background-color: transparent;
+}
+
+.log-pane .scroll-pane:focused {
+    -fx-background-color: transparent;
+}
+
+.error {
+    -fx-background-color: #FF000055;
+}
+
+.warning {
+    -fx-background-color: lightgrey;
+}
+
+.success {
+    -fx-background-color: #00FF0055;
+}

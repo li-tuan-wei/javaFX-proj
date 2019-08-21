@@ -1,0 +1,17 @@
+.html-editor .tool-bar {
+    -fx-visibility:hidden;
+    -fx-display:none;
+    -fx-opacity: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+span {
+    display:inline-block;
+}
+
+.level1 {
+    text-indent:50px;
+    -fx-text-fill: red;
+}

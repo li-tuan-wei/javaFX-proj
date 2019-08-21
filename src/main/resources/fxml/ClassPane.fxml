@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<VBox styleClass="class-pane" stylesheets="@/css/classPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ldh.common.testui.controller.ClassPaneController">
+    <children>
+        <HBox styleClass="title-container">
+            <children>
+                <Label text="测试用例" styleClass="title"> </Label>
+            </children>
+        </HBox>
+        <StackPane VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane fx:id="tablePane" fitToWidth="true" fitToHeight="true">
+                    <content>
+                        <VBox styleClass="class-selection" alignment="CENTER_LEFT">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <children>
+                                    <Label text="类"></Label>
+                                    <ComboBox fx:id="methodPackageComboBox" prefWidth="150" minWidth="150" prefHeight="35"  minHeight="35"/>
+                                    <ComboBox fx:id="classNameComboBox" prefWidth="400" minWidth="200" prefHeight="35"  minHeight="35" HBox.hgrow="ALWAYS"/>
+                                    <ComboBox fx:id="methodBox" prefWidth="250" minWidth="150" prefHeight="35"  minHeight="35"/>
+                                    <Label text="实例化方式" prefWidth="70" minWidth="70"/>
+                                    <ComboBox fx:id="instanceClassBox" prefWidth="100" minWidth="100" prefHeight="35"  minHeight="35"/>
+                                </children>
+                            </HBox>
+
+                            <TableView fx:id="paramTable" VBox.vgrow="ALWAYS"/>
+
+                            <HBox spacing="5">
+                                <children>
+                                    <JFXButton text="添加参数" onAction="#addParam" styleClass="btn, btn-primary"/>
+                                    <JFXButton text="运行" onAction="#runCase" styleClass="btn, btn-primary"/>
+                                    <JFXButton text="刷新" onAction="#refresh" styleClass="btn, btn-primary"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <!--<Button text="保存" onAction="#saveParam"/>-->
+                                    <JFXButton text="删除" onAction="#deleteParam" styleClass="btn, btn-warning"/>
+                                </children>
+                                <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </padding>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="paramPane" fitToHeight="true" fitToWidth="true" prefWidth="0" minWidth="0" visible="false"/>
+            </children>
+        </StackPane>
+
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</VBox>

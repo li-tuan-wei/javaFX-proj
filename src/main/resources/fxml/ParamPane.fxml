@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import com.jfoenix.controls.JFXButton?>
+
+<StackPane stylesheets="@/css/classPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ldh.common.testui.controller.ParamPaneController">
+    <children>
+        <VBox fx:id="showPane" spacing="5">
+            <children>
+                <HBox styleClass="title-container">
+                    <children>
+                        <Label text="参数变量" styleClass="title"> </Label>
+                    </children>
+                </HBox>
+                <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="序号" prefWidth="30">
+                            <cellValueFactory><PropertyValueFactory property="index" /></cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="名称" prefWidth="200">
+                            <cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="类别" prefWidth="100" fx:id="paramCategoryColumn">
+                            <cellValueFactory><PropertyValueFactory property="paramCategory" /></cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="变量类型" prefWidth="100" fx:id="paramClassNameColumn">
+                            <cellValueFactory><PropertyValueFactory property="className" /></cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="值" prefWidth="400">
+                            <cellValueFactory><PropertyValueFactory property="value" /></cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="描述" prefWidth="100">
+                            <cellValueFactory><PropertyValueFactory property="desc" /></cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+                <HBox spacing="5">
+                    <children>
+                        <JFXButton text="添加属性" onAction="#addParam" styleClass="btn, btn-primary"/>
+                        <JFXButton text="修改属性" onAction="#editParam" styleClass="btn, btn-default"/>
+                        <JFXButton text="删除属性" onAction="#removeParam" styleClass="btn, btn-danger"/>
+                        <JFXButton text="上移属性" onAction="#upParam" styleClass="btn, btn-info"/>
+                        <JFXButton text="下移属性" onAction="#downParam" styleClass="btn, btn-info"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <GridPane fx:id="editPane" visible="false" hgap="5" vgap="5">
+            <children>
+                <Label text="参数属性" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+                <Label text="属性名称" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" spacing="5" alignment="CENTER_LEFT">
+                    <Label text="属性类型" prefWidth="120" alignment="center"/>
+                    <ChoiceBox fx:id="paramCategoryChoiceBox"/>
+
+                    <Label text="变量类型" fx:id="paramClassNameLabel" visible="false"/>
+                    <ChoiceBox fx:id="paramClassNameChoiceBox" visible="false"/>
+                </HBox>
+
+
+                <Label text="属性值" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextArea fx:id="valueTextArea" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="属性描述" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextArea fx:id="descTextArea" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="5"  GridPane.columnSpan="2" spacing="10">
+                    <JFXButton text="保存" onAction="#saveParam" styleClass="btn, btn-primary" />
+                    <JFXButton text="返回" onAction="#returnShowPane" styleClass="btn, btn-default"/>
+                    <JFXButton fx:id="checkValueBtn" text="检查变量" onAction="#checkValue" styleClass="btn, btn-info"/>
+                </HBox>
+
+            </children>
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120" halignment="center"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+        </GridPane>
+    </children>
+    <padding>
+        <Insets top="5" right="5" bottom="5" left="5"/>
+    </padding>
+</StackPane>

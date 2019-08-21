@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import com.jfoenix.controls.JFXButton?>
+<VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ldh.common.testui.controller.SqlDataPaneController">
+    <children>
+        <HBox spacing="5" alignment="CENTER_LEFT">
+            <children>
+                <Label text="选择数据库"/>
+                <ChoiceBox fx:id="databaseChoiceBox" prefWidth="200"/>
+
+                <Label prefWidth="100"/>
+                <Label text="SQL:"/>
+                <RadioButton fx:id="sqlTextBtn" onAction="#selectSqlTextPane" selected="true"/>
+                <Label text="文件:"/>
+                <RadioButton fx:id="sqlFileBtn" onAction="#selectFilePane"/>
+                <!--<Label text="cvs:"/>-->
+                <!--<RadioButton fx:id="sqlCvsBtn" onAction="#selectCvsPane"/>-->
+                <Region HBox.hgrow="ALWAYS"/>
+
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <StackPane VBox.vgrow="ALWAYS">
+            <children>
+                <VBox fx:id="sqlTextPane">
+                    <TextArea fx:id="sqlTextArea"  VBox.vgrow="ALWAYS"/>
+                    <JFXButton text="保存" onAction="#saveSqlText" styleClass="btn, btn-primary" />
+                </VBox>
+                <BorderPane fx:id="sqlFilePane" visible="false">
+                    <center>
+                        <ListView fx:id="sqlFile"/>
+                    </center>
+                    <right>
+                        <VBox spacing="20">
+                            <children>
+                                <JFXButton text="添加文件" onAction="#addFile" styleClass="btn, btn-primary"/>
+                                <JFXButton text="删除文件" onAction="#deleteFile" styleClass="btn, btn-danger"/>
+                                <JFXButton text="上移" onAction="#toUpRow" styleClass="btn, btn-info"/>
+                                <JFXButton text="下移" onAction="#toDownRow" styleClass="btn, btn-info"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </VBox>
+                    </right>
+                </BorderPane>
+                <BorderPane fx:id="sqlCvsPane" visible="false">
+                    <left>
+                        <VBox>
+                            <children>
+                                <ListView fx:id="sqlCvs"/>
+                                <HBox spacing="20" alignment="CENTER_LEFT">
+                                    <children>
+                                        <JFXButton text="添加文件" onAction="#addFile" styleClass="btn, btn-primary"/>
+                                        <JFXButton text="删除文件" onAction="#deleteFile" styleClass="btn, btn-danger"/>
+                                        <JFXButton text="上移" onAction="#toUpRow" styleClass="btn, btn-info"/>
+                                        <JFXButton text="下移" onAction="#toDownRow" styleClass="btn, btn-info"/>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <children>
+                                        <CheckBox fx:id="baseOffsetDayCheckBox" text="时间是否动态偏移" onAction="#isBaseOffsetDay"/>
+                                        <Label text="时间偏移基准:"/>
+                                        <DatePicker fx:id="baseOffsetDayDatePicker" disable="true"/>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="0" left="0" right="5.0" top="0" />
+                            </padding>
+                        </VBox>
+                    </left>
+                    <center>
+                        <TableView fx:id="cvsTable"/>
+                    </center>
+                </BorderPane>
+            </children>
+        </StackPane>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</VBox>

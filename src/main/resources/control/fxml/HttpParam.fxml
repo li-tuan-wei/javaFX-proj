@@ -1,0 +1,41 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<fx:root type="javafx.scene.layout.HBox" xmlns:fx="http://javafx.com/fxml" spacing="2">
+    <children>
+        <TableView fx:id="tableView" HBox.hgrow="ALWAYS">
+            <columns>
+                <TableColumn text="Key" prefWidth="200" >
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Value" prefWidth="500">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="content" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <VBox spacing="5">
+            <children>
+                <JFXButton onAction="#add" styleClass="btn, btn-info">
+                    <graphic><FontAwesomeIconView styleClass="add-graphic"/></graphic>
+                </JFXButton>
+                <JFXButton onAction="#edit" styleClass="btn, btn-info">
+                    <graphic><FontAwesomeIconView styleClass="edit-graphic"/></graphic>
+                </JFXButton>
+                <JFXButton onAction="#remove" styleClass="btn, btn-info">
+                    <graphic><FontAwesomeIconView styleClass="remove-graphic"/></graphic>
+                </JFXButton>
+            </children>
+            <padding>
+                <Insets left="5" right="5" top="5" bottom="5"/>
+            </padding>
+        </VBox>
+    </children>
+</fx:root>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<?import ldh.common.testui.component.HttpParamControl?>
+<?import ldh.common.testui.component.HttpBodyControl?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextArea?>
+<?import ldh.common.testui.component.CodeTextArea?>
+<HBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ldh.common.testui.controller.TestFormController">
+    <children>
+    <VBox spacing="2" HBox.hgrow="ALWAYS">
+        <children>
+            <GridPane gridLinesVisible="false" hgap="3.0" vgap="3.0">
+                <children>
+                    <Label text="路径" GridPane.columnIndex="0" GridPane.rowIndex="0" prefHeight="37.0"/>
+                    <ChoiceBox fx:id="methodChoiceBox" prefWidth="80" GridPane.columnIndex="1" GridPane.rowIndex="0" prefHeight="37.0"/>
+                    <TextField fx:id="urlTextField" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" prefHeight="37.0"/>
+
+                    <FlowPane alignment="CENTER" hgap="2.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                        <children>
+                            <JFXButton onAction="#saveTest" prefHeight="37.0" prefWidth="82.0" text="保存" styleClass="btn, btn-info"/>
+                            <JFXButton fx:id="runBtn" onAction="#runTest" prefHeight="37.0" prefWidth="100.0" minWidth="100" text="运行" styleClass="btn, btn-info" />
+                        </children>
+                    </FlowPane>
+                </children>
+                <columnConstraints>
+                   <ColumnConstraints />
+                    <ColumnConstraints maxWidth="80.0" minWidth="50.0" prefWidth="80.0" />
+                   <ColumnConstraints hgrow="ALWAYS" />
+                   <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                </columnConstraints>
+                <rowConstraints>
+                   <RowConstraints />
+                   <RowConstraints />
+                </rowConstraints>
+            <padding>
+               <Insets top="5.0" />
+            </padding>
+            </GridPane>
+            <SplitPane dividerPositions="0.7" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+                <items>
+                    <JFXTabPane fx:id="paramTabPane">
+                        <tabs>
+                            <Tab closable="false" text="Param" >
+                                <content>
+                                    <HttpParamControl fx:id="paramControl"/>
+                                </content>
+                            </Tab>
+                            <Tab closable="false" text="Header">
+                                <content>
+                                    <HttpParamControl fx:id="headerControl"/>
+                                </content>
+                            </Tab>
+                            <!--<Tab closable="false" text="Cookie" >-->
+                                <!--<content>-->
+                                    <!--<HttpParamControl fx:id="cookieControl"/>-->
+                                <!--</content>-->
+                            <!--</Tab>-->
+                            <Tab closable="false" text="Body" fx:id="bodyTab">
+                                <content>
+                                    <HttpBodyControl fx:id="bodyControl"/>
+                                </content>
+                            </Tab>
+                        </tabs>
+                    </JFXTabPane>
+                    <JFXTabPane>
+                        <tabs>
+                            <Tab closable="false" text="测试结果" >
+                                <content>
+                                    <TextArea fx:id="testHttpResultTextArea" editable="false"/>
+                                </content>
+                            </Tab>
+                        </tabs>
+                    </JFXTabPane>
+                </items>
+            </SplitPane>
+        </children>
+    </VBox>
+    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

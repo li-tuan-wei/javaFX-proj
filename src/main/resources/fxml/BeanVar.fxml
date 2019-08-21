@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import com.jfoenix.controls.JFXButton?>
+<VBox stylesheets="@/css/classPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ldh.common.testui.controller.BeanVarController">
+    <children>
+        <HBox styleClass="title-container">
+            <children>
+                <Label text="实例化变量" styleClass="title"> </Label>
+            </children>
+        </HBox>
+        <StackPane fx:id="stackPane" VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane fx:id="listPane" fitToWidth="true" fitToHeight="true">
+                    <content>
+                        <VBox styleClass="class-selection" alignment="CENTER_LEFT">
+                            <Label text="变量列表"/>
+                            <TableView fx:id="beanVarTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn text="id" prefWidth="80">
+                                        <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="名称" prefWidth="150">
+                                        <cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="类型" prefWidth="60">
+                                        <cellValueFactory><PropertyValueFactory property="type" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="数据库" prefWidth="80">
+                                        <cellValueFactory><PropertyValueFactory property="databaseParam" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="Sql" prefWidth="200">
+                                        <cellValueFactory><PropertyValueFactory property="sql" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="参数" prefWidth="150">
+                                        <cellValueFactory><PropertyValueFactory property="args" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="对象路径" prefWidth="100">
+                                        <cellValueFactory><PropertyValueFactory property="packageParam" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="classNameColumn" text="对象名称" prefWidth="100">
+                                        <cellValueFactory><PropertyValueFactory property="className" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="实例化方式" prefWidth="100">
+                                        <cellValueFactory><PropertyValueFactory property="instanceClassType" /></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="methodColumn" text="方法名称" prefWidth="100">
+                                        <cellValueFactory><PropertyValueFactory property="method" /></cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+
+                            <HBox spacing="5">
+                                <children>
+                                    <JFXButton text="添加变量" onAction="#addBeanVar" styleClass="btn, btn-primary"/>
+                                    <JFXButton text="上移" onAction="#upData" styleClass="btn, btn-block"/>
+                                    <JFXButton text="下移" onAction="#downData" styleClass="btn, btn-block"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <JFXButton text="删除" onAction="#removeData" styleClass="btn, btn-warning"/>
+                                </children>
+                                <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </padding>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="paramPane" fitToHeight="true" fitToWidth="true" prefWidth="0" minWidth="0" visible="false">
+                    <content>
+                        <GridPane hgap="5" vgap="5">
+                            <children>
+                                <Label text="编辑变量" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="title"/>
+                                <Label text="变量名称" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <TextField fx:id="beanVarName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="变量类型" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <ComboBox fx:id="typeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="400"/>
+
+                                <StackPane GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                                    <children>
+                                        <GridPane fx:id="sqlGridPane" hgap="5" vgap="5">
+                                            <children>
+                                                <Label text="数据库" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                <ComboBox fx:id="databaseName" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="400"/>
+
+                                                <Label text="SQL" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                <TextArea fx:id="sqlText" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                                <Label text="参数" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                <TextField fx:id="argsText" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                                <Label text="包路径" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                                <ComboBox fx:id="packageName" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="400"/>
+
+                                                <Label text="类名" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                                <ComboBox fx:id="className" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="400"/>
+
+                                                <HBox GridPane.columnIndex="1" GridPane.rowIndex="5" spacing="5">
+                                                    <children>
+                                                        <JFXButton text="保存" onAction="#saveBeanVar" styleClass="btn, btn-primary"/>
+                                                        <JFXButton text="返回" onAction="#returnListPane" styleClass="btn, btn-default"/>
+                                                        <JFXButton text="测试" onAction="#testSqlAct" styleClass="btn, btn-info"/>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                            <columnConstraints>
+                                                <ColumnConstraints minWidth="100.0" prefWidth="100.0" halignment="RIGHT"/>
+                                                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="400.0" maxWidth="1000" halignment="LEFT" fillWidth="true"/>
+                                            </columnConstraints>
+                                        </GridPane>
+
+                                        <GridPane fx:id="methodGridPane" visible="false" hgap="5" vgap="5" GridPane.columnSpan="2">
+                                            <children>
+                                                <Label text="包路径" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                <ComboBox fx:id="packageName2" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="400"/>
+
+                                                <Label text="类名" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                <ComboBox fx:id="className2" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="400"/>
+
+                                                <Label text="实例化方式" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                <ComboBox fx:id="instanceType" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="400"/>
+
+                                                <Label text="方法" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                                <ComboBox fx:id="methodBox" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="400"/>
+
+                                                <Label text="参数" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                                <TextField fx:id="params" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="400"/>
+
+                                                <HBox GridPane.columnIndex="1" GridPane.rowIndex="5" spacing="5">
+                                                    <children>
+                                                        <JFXButton text="保存" onAction="#saveBeanVar" styleClass="btn, btn-primary"/>
+                                                        <JFXButton text="返回" onAction="#returnListPane" styleClass="btn, btn-default"/>
+                                                        <JFXButton text="测试" onAction="#testMethodAct" styleClass="btn, btn-info"/>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                            <columnConstraints>
+                                                <ColumnConstraints minWidth="100.0" prefWidth="100.0" halignment="RIGHT"/>
+                                                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="400.0" maxWidth="1000" halignment="LEFT" fillWidth="true"/>
+                                            </columnConstraints>
+                                        </GridPane>
+
+                                        <GridPane fx:id="clazzGridPane" visible="false" hgap="5" vgap="5" GridPane.columnSpan="2">
+                                            <children>
+                                                <Label text="包路径" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                <ComboBox fx:id="packageName3" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="400"/>
+
+                                                <Label text="类名" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                <ComboBox fx:id="className3" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="400"/>
+
+                                                <Label text="实例化方式" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                <ComboBox fx:id="instanceType3" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="400"/>
+
+                                                <HBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="5">
+                                                    <children>
+                                                        <JFXButton text="保存" onAction="#saveBeanVar" styleClass="btn, btn-primary"/>
+                                                        <JFXButton text="返回" onAction="#returnListPane" styleClass="btn, btn-default"/>
+                                                        <JFXButton text="测试" onAction="#testMethodAct" styleClass="btn, btn-info"/>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                            <columnConstraints>
+                                                <ColumnConstraints minWidth="100.0" prefWidth="100.0" halignment="RIGHT"/>
+                                                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="400.0" maxWidth="1000" halignment="LEFT" fillWidth="true"/>
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </children>
+                                </StackPane>
+
+
+                            </children>
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="100.0" prefWidth="100.0" halignment="RIGHT"/>
+                                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+                            </columnConstraints>
+                        </GridPane>
+                    </content>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </ScrollPane>
+            </children>
+        </StackPane>
+
+    </children>
+</VBox>

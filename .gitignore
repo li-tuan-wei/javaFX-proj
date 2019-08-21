@@ -1,0 +1,37 @@
+*.class
+
+# Package Files #
+*.war
+*.ear
+/bin
+
+# Eclipse #
+.classpath
+.treeNode
+.settings/
+/bin
+/target
+
+# IntelliJ IDEA
+.idea/
+/out
+*.iml
+*/*.iml
+
+# maven #
+dependency-reduced-pom.xml
+
+# logs #
+*.log
+/logs
+*.lck
+
+# FXGL #
+/saves
+/profiles
+/system
+
+# FXGL Tests #
+/testprofiles
+
+/data
